@@ -30,7 +30,11 @@ codex plugin add rflow-harness@personal
 
 Start a new Codex thread after installing so the new skills are loaded.
 
-If the packaged Codex CLI cannot run from the current shell, confirm that `~/.agents/plugins/marketplace.json` contains `rflow-harness`, then install from the Codex app UI or retry from a shell with access to the Codex CLI.
+If the Codex CLI is not on PATH, open the plugin from the Codex app plugin UI or use this deeplink:
+
+```text
+codex://plugins/rflow-harness?marketplacePath=C%3A%5CUsers%5Cyounh%5C.agents%5Cplugins%5Cmarketplace.json
+```
 
 ## Updating From GitHub
 
@@ -46,6 +50,8 @@ The update script runs `git pull --ff-only`, validates the plugin, ensures the p
 ```powershell
 codex plugin add rflow-harness@personal
 ```
+
+If the Codex CLI is not available, the script also prints a Codex app deeplink for installing from the plugin UI.
 
 ## Design Rule
 

@@ -2,15 +2,18 @@
 import argparse
 import json
 import re
+import shutil
 import subprocess
 from datetime import datetime, timezone
 from pathlib import Path
+from urllib.parse import quote
 
 
 PLUGIN_ROOT = Path(__file__).resolve().parents[1]
 MANIFEST = PLUGIN_ROOT / ".codex-plugin" / "plugin.json"
 VALIDATOR = Path.home() / ".codex" / "skills" / ".system" / "plugin-creator" / "scripts" / "validate_plugin.py"
 PLUGIN_NAME = "rflow-harness"
+MARKETPLACE_PATH = Path.home() / ".agents" / "plugins" / "marketplace.json"
 
 
 def run(command: list[str], cwd: Path = PLUGIN_ROOT) -> None:
@@ -71,8 +74,14 @@ def main() -> int:
 
     print("")
     print("Local marketplace is ready.")
-    print("Next install/reinstall command:")
+    print("Next install/reinstall command, if the Codex CLI is on PATH:")
     print(f"  codex plugin add {PLUGIN_NAME}@personal")
+    if shutil.which("codex") is None:
+        deeplink = f"codex://plugins/{PLUGIN_NAME}?marketplacePath={quote(str(MARKETPLACE_PATH))}"
+        print("")
+        print("Codex CLI was not found on PATH.")
+        print("Use the Codex app plugin UI or open this deeplink instead:")
+        print(f"  {deeplink}")
     print("Start a new Codex thread after reinstalling so the updated skills load.")
     return 0
 
