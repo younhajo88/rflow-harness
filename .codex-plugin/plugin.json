@@ -1,0 +1,23 @@
+{
+  "name": "rflow-harness",
+  "version": "0.1.0",
+  "description": "Versioned Codex harness factory for PRD-driven projects.",
+  "author": {
+    "name": "younhajo88"
+  },
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "Rflow Harness",
+    "shortDescription": "Create and run PRD-driven project harnesses.",
+    "longDescription": "Rflow Harness installs a common lifecycle harness, composes domain and project overlays, creates master and phase plans, audits planning documents, and runs phase-scoped implementation handoffs.",
+    "developerName": "younhajo88",
+    "category": "Productivity",
+    "capabilities": [
+      "Project planning",
+      "Harness generation",
+      "Phase execution",
+      "Verification"
+    ],
+    "defaultPrompt": "Use Rflow Harness to turn my PRD into a project harness, master plan, phase plans, audit, and phase run workflow."
+  }
+}
