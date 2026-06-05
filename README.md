@@ -32,6 +32,21 @@ Start a new Codex thread after installing so the new skills are loaded.
 
 If the packaged Codex CLI cannot run from the current shell, confirm that `~/.agents/plugins/marketplace.json` contains `rflow-harness`, then install from the Codex app UI or retry from a shell with access to the Codex CLI.
 
+## Updating From GitHub
+
+Use the GitHub repository as the canonical source, while Codex installs from the local checkout through the personal marketplace.
+
+```powershell
+cd C:\work\rflow-harness
+python .\scripts\update_local_install.py --pull
+```
+
+The update script runs `git pull --ff-only`, validates the plugin, ensures the personal marketplace points at this checkout, updates the plugin version cachebuster, and prints the reinstall command:
+
+```powershell
+codex plugin add rflow-harness@personal
+```
+
 ## Design Rule
 
 The common lifecycle is installed as a project snapshot, not live-linked. Domain harnesses may add roles, checks, and constraints, but they must not override the common lifecycle.
