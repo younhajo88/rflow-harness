@@ -14,6 +14,24 @@ Rflow Harness is a Codex plugin for PRD-driven projects. It installs a versioned
 
 - SEO
 
+## Local Development Install
+
+Register the plugin in the default personal marketplace:
+
+```powershell
+python .\scripts\register_personal_marketplace.py
+```
+
+Then install it in Codex:
+
+```powershell
+codex plugin add rflow-harness@personal
+```
+
+Start a new Codex thread after installing so the new skills are loaded.
+
+If the packaged Codex CLI cannot run from the current shell, confirm that `~/.agents/plugins/marketplace.json` contains `rflow-harness`, then install from the Codex app UI or retry from a shell with access to the Codex CLI.
+
 ## Design Rule
 
 The common lifecycle is installed as a project snapshot, not live-linked. Domain harnesses may add roles, checks, and constraints, but they must not override the common lifecycle.
