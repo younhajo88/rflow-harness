@@ -8,7 +8,7 @@ Always follow:
 
 1. PRD defines what to build.
 2. `.codex/HARNESS.md` defines the common lifecycle.
-3. `.codex/DOMAIN.md` defines domain-specific rules.
+3. `.codex/DOMAIN.md` defines PRD-derived domain and project rules.
 4. `docs/plans/00_master_implementation_plan.md` defines phase order.
 5. `docs/plans/phase-XX-*.md` defines phase-level implementation handoffs.
 6. `_workspace/00_project_status.md` is the current state board.

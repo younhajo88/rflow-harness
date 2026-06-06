@@ -3,7 +3,7 @@
 ## Harness Sources
 
 - common lifecycle: rflow-common@0.1.0
-- domain harness: see `.codex/DOMAIN.md`
+- PRD-generated domain and project harness: see `.codex/DOMAIN.md`
 - lockfile: `.codex/harness.lock.json`
 
 ## Mission
@@ -33,7 +33,7 @@ Preserve project direction, execution quality, and progress state across Codex s
 
 ## Invariants
 
-- Domain harnesses add expertise but do not override this lifecycle.
+- PRD-generated domain and project rules add expertise but do not override this lifecycle.
 - Project files contain a snapshot of the harness.
 - Updates to common harness rules require explicit user request.
 - Completion requires verification evidence.

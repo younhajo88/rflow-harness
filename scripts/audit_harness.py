@@ -36,8 +36,21 @@ def main() -> int:
             prd = args.prd or lock.get("prdSource")
             if prd and not (root / prd).exists():
                 findings.append({"status": "WARN", "check": "prd_source_exists", "path": prd})
+            if lock.get("generationStatus") != "complete":
+                findings.append({
+                    "status": "FAIL",
+                    "check": "prd_harness_generation_complete",
+                    "path": ".codex/harness.lock.json",
+                })
         except json.JSONDecodeError:
             findings.append({"status": "FAIL", "check": "lockfile_valid_json", "path": ".codex/harness.lock.json"})
+
+    roles = list((root / ".codex" / "roles").glob("*.md"))
+    skills = list((root / ".codex" / "skills").glob("*/SKILL.md"))
+    if not roles:
+        findings.append({"status": "FAIL", "check": "generated_roles_exist", "path": ".codex/roles/*.md"})
+    if not skills:
+        findings.append({"status": "FAIL", "check": "generated_skills_exist", "path": ".codex/skills/*/SKILL.md"})
 
     if not (root / args.master_plan).exists():
         findings.append({"status": "WARN", "check": "master_plan_exists", "path": args.master_plan})

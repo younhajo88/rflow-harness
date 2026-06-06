@@ -20,8 +20,8 @@ A solo builder using Codex across multiple sessions who needs repeatable project
 ## Requirements
 
 - Install a versioned common lifecycle snapshot into the target project.
-- Generate a domain harness and project overlay from the PRD.
-- Support SEO as the first domain.
+- Generate a project-specific domain harness, expert roles, skills, guardrails, and verification standards from the PRD.
+- Keep domain generation open-ended rather than selecting from bundled domain packs.
 - Create `_workspace/00_project_status.md`, decision log, verification log, and reports directory.
 - Create a `harness.lock.json` file that records source versions.
 - Keep phase plans independent enough for a fresh session to implement and verify.
@@ -32,7 +32,7 @@ A solo builder using Codex across multiple sessions who needs repeatable project
 
 - Do not build a fully autonomous deployment system in v0.1.
 - Do not live-link project harness files to plugin templates.
-- Do not support every domain initially.
+- Do not maintain a catalog of fixed domain templates in the core plugin.
 - Do not make domain harnesses override the common lifecycle.
 
 ## Success Criteria
