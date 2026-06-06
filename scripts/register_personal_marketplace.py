@@ -1,7 +1,6 @@
 #!/usr/bin/env python3
 import argparse
 import json
-import os
 import shutil
 from pathlib import Path
 
@@ -25,29 +24,13 @@ def write_marketplace(path: Path, payload: dict) -> None:
     path.write_text(json.dumps(payload, indent=2), encoding="utf-8")
 
 
-def link_or_copy(src: Path, dst: Path) -> str:
+def sync_copy(src: Path, dst: Path) -> str:
     dst.parent.mkdir(parents=True, exist_ok=True)
     if dst.exists():
-        if dst.resolve() == src.resolve():
-            return "already-linked"
-        if dst.is_symlink():
-            dst.unlink()
-        else:
-            raise FileExistsError(f"{dst} already exists and is not a link to {src}")
-
-    if os.name == "nt":
-        # Junctions work for local development without requiring Developer Mode.
-        import subprocess
-
-        subprocess.run(["cmd", "/c", "mklink", "/J", str(dst), str(src)], check=True)
-        return "junction"
-
-    try:
-        dst.symlink_to(src, target_is_directory=True)
-        return "symlink"
-    except OSError:
-        shutil.copytree(src, dst)
-        return "copy"
+        shutil.rmtree(dst)
+    ignore = shutil.ignore_patterns(".git", "__pycache__", "*.pyc")
+    shutil.copytree(src, dst, ignore=ignore)
+    return "copy"
 
 
 def main() -> int:
@@ -61,7 +44,7 @@ def main() -> int:
     marketplace_path = marketplace_root / "marketplace.json"
     plugin_link = marketplace_root / "plugins" / PLUGIN_NAME
 
-    mode = link_or_copy(plugin_root, plugin_link)
+    mode = sync_copy(plugin_root, plugin_link)
 
     payload = load_marketplace(marketplace_path)
     plugins = payload.setdefault("plugins", [])

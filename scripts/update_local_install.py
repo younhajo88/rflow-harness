@@ -66,11 +66,11 @@ def main() -> int:
         raise FileNotFoundError(f"missing Codex plugin validator: {VALIDATOR}")
 
     run(["python", str(VALIDATOR), str(PLUGIN_ROOT)])
-    run(["python", str(PLUGIN_ROOT / "scripts" / "register_personal_marketplace.py")])
-
     if not args.no_cachebuster:
         update_cachebuster(args.cachebuster)
         run(["python", str(VALIDATOR), str(PLUGIN_ROOT)])
+
+    run(["python", str(PLUGIN_ROOT / "scripts" / "register_personal_marketplace.py")])
 
     print("")
     print("Local marketplace is ready.")

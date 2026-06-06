@@ -50,14 +50,14 @@ Start-Process "codex://plugins/rflow-harness?marketplacePath=C%3A%5CUsers%5Cyoun
 
 ## Updating From GitHub
 
-Use the GitHub repository as the canonical source, while Codex installs from the local checkout through the personal marketplace.
+Use the GitHub repository as the canonical source, while Codex installs from a synced local copy in the personal marketplace.
 
 ```powershell
 cd C:\work\rflow-harness
 python .\scripts\update_local_install.py --pull
 ```
 
-The update script runs `git pull --ff-only`, validates the plugin, ensures the personal marketplace points at this checkout, updates the plugin version cachebuster, and prints the reinstall command:
+The update script runs `git pull --ff-only`, validates the plugin, syncs a copy into the personal marketplace, updates the plugin version cachebuster, and prints the reinstall command:
 
 ```powershell
 codex plugin add rflow-harness@personal
