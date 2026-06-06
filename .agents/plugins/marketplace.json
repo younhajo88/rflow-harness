@@ -1,0 +1,20 @@
+{
+  "name": "rflow-harness-marketplace",
+  "interface": {
+    "displayName": "Rflow Harness"
+  },
+  "plugins": [
+    {
+      "name": "rflow-harness",
+      "source": {
+        "source": "local",
+        "path": "./plugins/rflow-harness"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Productivity"
+    }
+  ]
+}

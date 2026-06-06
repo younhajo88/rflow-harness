@@ -7,8 +7,9 @@ from pathlib import Path
 
 
 ROOT = Path(__file__).resolve().parents[1]
-SCAFFOLD = ROOT / "scripts" / "scaffold_harness.py"
-AUDIT = ROOT / "scripts" / "audit_harness.py"
+PLUGIN_ROOT = ROOT / "plugins" / "rflow-harness"
+SCAFFOLD = PLUGIN_ROOT / "scripts" / "scaffold_harness.py"
+AUDIT = PLUGIN_ROOT / "scripts" / "audit_harness.py"
 
 
 def run(*args):

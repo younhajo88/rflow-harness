@@ -2,6 +2,18 @@
 
 Rflow Harness is a Codex plugin for PRD-driven projects. It installs a versioned common lifecycle, generates a project-specific domain harness from the PRD, creates master and phase plans, audits the documents, and runs implementation one phase at a time.
 
+## Install From GitHub
+
+This repository is a Codex marketplace. In the Codex app:
+
+1. Open the Plugins tab.
+2. Choose **Add marketplace**.
+3. Enter `https://github.com/younhajo88/rflow-harness.git`.
+4. Install **Rflow Harness** from the added marketplace.
+5. Start a new thread so the skills are loaded.
+
+The marketplace manifest is `.agents/plugins/marketplace.json`, and the plugin package is under `plugins/rflow-harness/`.
+
 ## Workflow
 
 1. `r1-make-harness`: install the common lifecycle and generate domain roles, skills, project guardrails, status board, and lockfile from a PRD.
@@ -19,7 +31,7 @@ Rflow Harness does not bundle or select fixed domain packs. `r1-make-harness` re
 Register the plugin in the default personal marketplace:
 
 ```powershell
-python .\scripts\register_personal_marketplace.py
+python .\plugins\rflow-harness\scripts\register_personal_marketplace.py
 ```
 
 Then install it in Codex:
@@ -54,7 +66,7 @@ Use the GitHub repository as the canonical source, while Codex installs from a s
 
 ```powershell
 cd C:\work\rflow-harness
-python .\scripts\update_local_install.py --pull
+python .\plugins\rflow-harness\scripts\update_local_install.py --pull
 ```
 
 The update script runs `git pull --ff-only`, validates the plugin, syncs a copy into the personal marketplace, updates the plugin version cachebuster, and prints the reinstall command:
