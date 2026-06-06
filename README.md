@@ -30,10 +30,22 @@ codex plugin add rflow-harness@personal
 
 Start a new Codex thread after installing so the new skills are loaded.
 
-If the Codex CLI is not on PATH, open the plugin from the Codex app plugin UI or use this deeplink:
+If the Codex CLI is not on PATH, use the Codex app plugin UI. The personal marketplace is already registered at:
+
+```text
+C:\Users\younh\.agents\plugins\marketplace.json
+```
+
+If Codex protocol deeplinks are registered on your machine, this may also open the plugin view:
 
 ```text
 codex://plugins/rflow-harness?marketplacePath=C%3A%5CUsers%5Cyounh%5C.agents%5Cplugins%5Cmarketplace.json
+```
+
+From PowerShell, run it with:
+
+```powershell
+Start-Process "codex://plugins/rflow-harness?marketplacePath=C%3A%5CUsers%5Cyounh%5C.agents%5Cplugins%5Cmarketplace.json"
 ```
 
 ## Updating From GitHub

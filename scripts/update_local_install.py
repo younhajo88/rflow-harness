@@ -80,7 +80,9 @@ def main() -> int:
         deeplink = f"codex://plugins/{PLUGIN_NAME}?marketplacePath={quote(str(MARKETPLACE_PATH))}"
         print("")
         print("Codex CLI was not found on PATH.")
-        print("Use the Codex app plugin UI or open this deeplink instead:")
+        print("Use the Codex app plugin UI. If deeplinks are registered, this command may open it:")
+        print(f"  Start-Process \"{deeplink}\"")
+        print("Deeplink:")
         print(f"  {deeplink}")
     print("Start a new Codex thread after reinstalling so the updated skills load.")
     return 0
